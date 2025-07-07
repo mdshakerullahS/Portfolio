@@ -1,3 +1,3 @@
 # Personal-Portfolio
 <br>
-A personal portfolio website to showcase my projects created using HTML & CSS.
+A personal portfolio website to showcase my projects created using HTML, CSS and JavaScript.
