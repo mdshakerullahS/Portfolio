@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const Hero: FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center bg-linear-to-t from-black/5 to-transparent overflow-hidden pt-20">
       {/* Background Blobs */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#00f2ff]/20 blur-[120px] rounded-full" />
+      <div className="absolute top-1/12 -left-20 w-96 h-96 bg-[#00f2ff]/20 blur-[120px] rounded-full" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#bc13fe]/20 blur-[120px] rounded-full" />
 
       <div className="container mx-auto px-6 z-10 text-center">
@@ -52,12 +52,6 @@ const Hero: FC = () => {
               className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-[#bc13fe]/50 transition-all text-white"
             >
               <Linkedin size={24} />
-            </Link>
-            <Link
-              href="#terminal"
-              className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/50 transition-all text-white"
-            >
-              <Terminal size={24} />
             </Link>
           </div>
         </div>
