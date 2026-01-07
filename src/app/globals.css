@@ -41,3 +41,13 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.bento-card {
+  border: 1px solid #1e293b;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+  transform: translateY(-2px);
+}
