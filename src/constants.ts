@@ -12,3 +12,16 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/mdshakerullahS/Furniro",
   },
 ];
+
+export const SKILLS: string[] = [
+  "JavaScript/TypeScript",
+  "React/Next.js",
+  "Node.js/Express",
+  "PostgreSQL/MongoDB",
+  "Prisma/Mongoose",
+  "Tailwind CSS",
+  "Zustand",
+  "Docker",
+  "Linux",
+  "Git/GitHub",
+];
