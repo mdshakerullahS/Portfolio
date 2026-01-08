@@ -1,5 +1,3 @@
-import { treeifyError } from "zod";
-
 export interface APISuccess {
   success: true;
   message: string;
@@ -8,5 +6,14 @@ export interface APISuccess {
 export interface APIError {
   success: false;
   message: string;
-  errors?: ReturnType<typeof treeifyError>;
+  errors?: {
+    errors: string[];
+    properties?:
+      | {
+          name?: { errors: string[] } | undefined;
+          email?: { errors: string[] } | undefined;
+          message?: { errors: string[] } | undefined;
+        }
+      | undefined;
+  };
 }
