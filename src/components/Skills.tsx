@@ -1,5 +1,4 @@
 import { SKILLS } from "@/constants";
-import { Cloud, Database, Layout, Rocket } from "lucide-react";
 import { FC } from "react";
 
 const Skills: FC = () => {
