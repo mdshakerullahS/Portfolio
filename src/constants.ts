@@ -1,4 +1,5 @@
-import { Project } from "./types";
+import { Project, SocialLink } from "./types";
+import { Mail, Github, Linkedin } from "lucide-react";
 
 export const PROJECTS: Project[] = [
   {
@@ -24,4 +25,25 @@ export const SKILLS: string[] = [
   "Docker",
   "Linux",
   "Git/GitHub",
+];
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    label: "Email",
+    value: "sourovmdshakerullah@gmail.com",
+    href: "mailto:sourovmdshakerullah@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "GitHub",
+    value: "@mdshakerullahS",
+    href: "https://github.com/mdshakerullahS",
+    icon: Github,
+  },
+  {
+    label: "LinkedIn",
+    value: "@mdshakerullah",
+    href: "https://linkedin.com/in/mdshakerullah",
+    icon: Linkedin,
+  },
 ];
