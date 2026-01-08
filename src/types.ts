@@ -1,5 +1,7 @@
 import { LucideProps } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
+import z4 from "zod/v4";
+import { messageSchema } from "./schemas/messageSchema";
 
 export interface Project {
   id: string;
@@ -18,6 +20,8 @@ export interface Message {
   text: string;
   createdAt: Date;
 }
+
+export type MessageInput = z4.infer<typeof messageSchema>;
 
 export interface SocialLink {
   label: string;
