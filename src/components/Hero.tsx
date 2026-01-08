@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { ArrowRight, Github, Linkedin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { SOCIAL_LINKS } from "@/constants";
 
 const Hero: FC = () => {
   return (
@@ -52,20 +53,9 @@ const Hero: FC = () => {
 
           {/* Glass Social Buttons */}
           <div className="flex items-center gap-3">
-            {[
-              {
-                href: "https://github.com/mdshakerullahS",
-                icon: <Github size={22} />,
-                label: "GitHub",
-              },
-              {
-                href: "https://linkedin.com/in/mdshakerullah",
-                icon: <Linkedin size={22} />,
-                label: "LinkedIn",
-              },
-            ].map((social, idx) => (
+            {SOCIAL_LINKS.map((social, i) => (
               <Link
-                key={idx}
+                key={i}
                 href={social.href}
                 target="_blank"
                 className="p-4 rounded-2xl glass hover:border hover:text-blue-400 transition-all group relative"
@@ -74,7 +64,7 @@ const Hero: FC = () => {
                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-white text-black text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                   {social.label}
                 </div>
-                {social.icon}
+                <social.icon />
               </Link>
             ))}
           </div>
