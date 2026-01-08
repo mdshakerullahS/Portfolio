@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { ExternalLink, Github } from "lucide-react";
-import { Project } from "@/types";
+import { Project } from "@/types/types";
 import Link from "next/link";
 
 interface ProjectCardProps {

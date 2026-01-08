@@ -1,4 +1,4 @@
-import { Project, SocialLink } from "./types";
+import { Project, SocialLink } from "./types/types";
 import { Mail, Github, Linkedin } from "lucide-react";
 
 export const PROJECTS: Project[] = [
