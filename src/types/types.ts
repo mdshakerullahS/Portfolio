@@ -1,7 +1,7 @@
 import { LucideProps } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 import z4 from "zod/v4";
-import { messageSchema } from "@/schemas/messageSchema";
+import { messageSchema } from "@/schemas/message.schema";
 
 export interface Project {
   id: string;

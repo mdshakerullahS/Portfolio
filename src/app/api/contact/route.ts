@@ -1,4 +1,4 @@
-import { messageSchema } from "@/schemas/messageSchema";
+import { messageSchema } from "@/schemas/message.schema";
 import { NextResponse } from "next/server";
 import { MessageInput } from "@/types/types";
 import { treeifyError } from "zod";

@@ -1,6 +1,6 @@
 "use client";
 
-import { messageSchema } from "@/schemas/messageSchema";
+import { messageSchema } from "@/schemas/message.schema";
 import { APIError, APISuccess } from "@/types/api.types";
 import { MessageInput } from "@/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
