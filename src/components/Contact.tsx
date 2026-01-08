@@ -25,9 +25,9 @@ const Contact: FC = () => {
                     key={i}
                     href={link.href}
                     target="_blank"
-                    className="group flex items-center gap-4 text-slate-300 hover:text-white transition-all duration-300"
+                    className="group flex items-center gap-4 text-slate-300 hover:text-blue-400 transition-all duration-300"
                   >
-                    <div className="p-3 rounded-xl bg-white/5 border border-white/10 group-hover:border-blue-400 group-hover:bg-blue-500/10 transition-all">
+                    <div className="p-3 rounded-xl glass transition-all">
                       <link.icon />
                     </div>
                     <div className="flex flex-col">
