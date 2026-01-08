@@ -13,8 +13,8 @@ const Hero: FC = () => {
         {/* Status Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md transition-colors hover:border-blue-500/50 group">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
           </span>
           <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-300 font-mono group-hover:text-white transition-colors">
             Available for new opportunities
@@ -68,7 +68,7 @@ const Hero: FC = () => {
                 key={idx}
                 href={social.href}
                 target="_blank"
-                className="p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all text-white group relative"
+                className="p-4 rounded-2xl glass hover:border hover:text-blue-400 transition-all group relative"
                 aria-label={social.label}
               >
                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-white text-black text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
