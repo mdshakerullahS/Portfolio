@@ -24,12 +24,14 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
           <div className="flex gap-3">
             <Link
               href={project.github!}
+              aria-label={`${project.title} - GitHub repo`}
               className="text-gray-400 hover:text-blue-400 transition-colors"
             >
               <Github size={18} />
             </Link>
             <Link
               href={project.link!}
+              aria-label={`${project.title} - live demo`}
               className="text-gray-400 hover:text-blue-400 transition-colors"
             >
               <ExternalLink size={18} />
