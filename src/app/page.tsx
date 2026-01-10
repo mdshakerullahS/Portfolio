@@ -10,11 +10,13 @@ export default function Home() {
   return (
     <div className="cyber-grid">
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
