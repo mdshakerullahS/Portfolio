@@ -12,15 +12,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://shakerullah.vercel.app"),
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
+const TITLE = "Shakerullah - Full Stack Web Developer";
+const NAME = "Md Shakerullah Sourov";
 
-  title: "Shakerullah - Full Stack Web Developer",
+export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
+
+  title: TITLE,
   description:
     "I build scalable production-ready web applications using modern technologies like Next.js, React and Node.js.",
 
   alternates: {
-    canonical: "https://shakerullah.vercel.app",
+    canonical: BASE_URL,
   },
 
   robots: {
@@ -34,8 +38,8 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: "https://shakerullah.vercel.app",
-    title: "Shakerullah - Full Stack Web Developer",
+    url: BASE_URL,
+    title: TITLE,
     description:
       "I build scalable production-ready web applications using modern technologies like Next.js, React and Node.js.",
     siteName: "Shakerullah",
@@ -44,7 +48,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Shakerullah - Full Stack Web Developer",
+        alt: TITLE,
       },
     ],
   },
@@ -55,7 +59,7 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
     description:
       "I build scalable production-ready web applications using modern technologies like Next.js, React and Node.js.",
-    title: "Shakerullah - Full Stack Web Developer",
+    title: TITLE,
   },
 
   icons: {
@@ -63,9 +67,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
 
-  creator: "Md Shakerullah Sourov",
+  creator: NAME,
 
-  publisher: "Md Shakerullah Sourov",
+  publisher: NAME,
 };
 
 export const viewport: Viewport = {
