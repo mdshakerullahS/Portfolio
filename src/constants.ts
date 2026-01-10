@@ -8,7 +8,7 @@ export const PROJECTS: Project[] = [
     description:
       "A full stack e-commerce web application built with modern web technologies.",
     tags: ["Next.js", "Node.js", "Express", "MongoDB"],
-    image: "/Homepage.png",
+    image: "/projects/Furniro.png",
     link: "https://furniro-hazel-nine.vercel.app/",
     github: "https://github.com/mdshakerullahS/Furniro",
   },
