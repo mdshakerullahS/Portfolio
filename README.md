@@ -42,6 +42,7 @@ portfolio/
 ├─ public/ # Static assets (images, icons)
    ├─ src/
       ├─ app/ # Next.js routing
+         ├─ api/ # API routes (contact)
       ├─ components/ # React components
       ├─ schemas/ # Zod schemas
       ├─ services/ # Email service
