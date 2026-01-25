@@ -32,7 +32,7 @@ const Hero: FC = () => {
 
         {/* Description */}
         <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-          Full Stack Developer specializing in{" "}
+          Full-Stack Developer specializing in{" "}
           <span className="text-white">high-performance</span> end-to-end
           applications. I turn complex problems into{" "}
           <span className="text-blue-400 font-medium font-mono">

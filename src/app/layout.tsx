@@ -13,15 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL!;
-const TITLE = "Shakerullah - Full Stack Web Developer";
+const TITLE = "Shakerullah - Full-Stack Web Developer";
+const DESCRIPTION =
+  "I build end-to-end web applications with modern frontend technologies and scalable backend systems. Passionate about clean UI, performance, and real-world problem solving.";
 const NAME = "Md Shakerullah Sourov";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
 
   title: TITLE,
-  description:
-    "I build scalable production-ready web applications using modern technologies like Next.js, React and Node.js.",
+  description: DESCRIPTION,
 
   alternates: {
     canonical: BASE_URL,
@@ -40,8 +41,7 @@ export const metadata: Metadata = {
     type: "website",
     url: BASE_URL,
     title: TITLE,
-    description:
-      "I build scalable production-ready web applications using modern technologies like Next.js, React and Node.js.",
+    description: DESCRIPTION,
     siteName: "Shakerullah",
     images: [
       {
@@ -57,8 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@mdshakerullahS",
     images: ["/og-image.png"],
-    description:
-      "I build scalable production-ready web applications using modern technologies like Next.js, React and Node.js.",
+    description: DESCRIPTION,
     title: TITLE,
   },
 

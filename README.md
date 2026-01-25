@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Welcome to my personal portfolio website! This project showcases my **full stack web development skills**, projects, and experience.
+Welcome to my personal portfolio website! This project showcases my **full-stack web development skills**, projects, and experience.
 
 ---
 

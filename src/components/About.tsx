@@ -54,13 +54,13 @@ const About: FC = () => {
             <h2 className="text-2xl font-bold mb-4 text-white">
               👋 Hi, I'm <span className="text-blue-400">Shakerullah</span>
               <span className="block text-lg font-medium text-slate-400 mt-1">
-                Full Stack Web Developer
+                Full-Stack Web Developer
               </span>
             </h2>
             <p className="text-slate-400 leading-relaxed text-lg">
-              I build scalable production-ready web applications using modern
-              technologies like{" "}
-              <span className="text-white">Next.js, React and Node.js.</span>
+              I build end-to-end web applications with modern frontend
+              technologies and scalable backend systems. Passionate about clean
+              UI, performance, and real-world problem solving.
             </p>
           </div>
 
@@ -86,7 +86,7 @@ const About: FC = () => {
             </h3>
             <ul className="space-y-4">
               {[
-                "Full stack web application development",
+                "Full-stack web application development",
                 "Secure authentication systems",
                 "RESTful API design & implementation",
                 "Responsive UI & database architecture",

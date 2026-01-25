@@ -6,7 +6,7 @@ export const PROJECTS: Project[] = [
     id: "1",
     title: "Furniro",
     description:
-      "A full stack e-commerce web application built with modern web technologies.",
+      "A full-stack e-commerce web application built with modern web technologies.",
     tags: ["Next.js", "Node.js", "Express", "MongoDB"],
     image: "/projects/Furniro.png",
     link: "https://furniro-hazel-nine.vercel.app/",
