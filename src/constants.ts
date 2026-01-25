@@ -32,7 +32,7 @@ export const SKILLS: string[] = [
   "Prisma ORM/Mongoose",
   "Tailwind CSS",
   "Zustand",
-  "Tanstack Query",
+  "TanStack Query",
   "Redis",
   "Docker",
   "Linux",
