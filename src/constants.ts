@@ -27,16 +27,19 @@ export const PROJECTS: Project[] = [
 export const SKILLS: string[] = [
   "JavaScript/TypeScript",
   "React/Next.js",
-  "Node.js/Express",
-  "PostgreSQL/MongoDB",
-  "Prisma ORM/Mongoose",
   "Tailwind CSS",
+  "Node.js/Express",
+  "Prisma ORM/Mongoose",
+  "PostgreSQL/MongoDB",
   "Zustand",
   "TanStack Query",
   "Redis",
-  "Docker",
-  "Linux",
   "Git/GitHub",
+  // "Linux",
+  "Docker",
+  "Vercel",
+  "Render",
+  "Figma",
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
