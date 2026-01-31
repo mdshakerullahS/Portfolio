@@ -2,6 +2,7 @@ import { FC } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Project } from "@/types/types";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,9 +11,12 @@ interface ProjectCardProps {
 const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="group relative glass rounded-2xl overflow-hidden hover:border-[#00f2ff]/50 transition-all duration-500 hover:-translate-y-2">
-      <div className="h-56 overflow-hidden">
-        <img
+      <div className="overflow-hidden aspect-video">
+        <Image
           src={project.image}
+          width={512}
+          height={360}
+          loading="lazy"
           alt={project.title}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100"
         />
