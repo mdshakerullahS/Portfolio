@@ -62,6 +62,7 @@ const Navbar: FC = () => {
 
         {/* Mobile Toggle */}
         <button
+          aria-label="Menu"
           className="md:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
