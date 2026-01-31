@@ -22,7 +22,7 @@ export default function Hero() {
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 tracking-tighter leading-[0.85] text-white">
+        <h1 className="text-4xl md:text-7xl lg:text-8xl font-black mb-8 tracking-tighter leading-[0.85] text-white">
           BUILDING THE <br />
           <span className="bg-linear-to-r from-blue-400 via-white to-purple-500 bg-clip-text text-transparent italic">
             FUTURE WEB.
@@ -31,7 +31,7 @@ export default function Hero() {
 
         {/* Description */}
         <p className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-          Full-Stack Developer specializing in{" "}
+          Full-stack web developer specializing in{" "}
           <span className="text-white">high-performance</span> end-to-end
           applications. I turn complex problems into{" "}
           <span className="text-blue-400 font-medium font-mono">
@@ -66,20 +66,6 @@ export default function Hero() {
                 <social.icon />
               </Link>
             ))}
-          </div>
-        </div>
-
-        {/* Tech Stack Scroll Indicator (Optional) */}
-        <div className="mt-24 pt-10 border-t border-white/5 flex flex-col items-center">
-          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-6">
-            Expertise In
-          </p>
-          <div className="flex flex-wrap justify-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-            {/* Just labels or small icons for tech */}
-            <span className="font-mono text-sm font-bold">NEXT.JS</span>
-            <span className="font-mono text-sm font-bold">REACT</span>
-            <span className="font-mono text-sm font-bold">NODE.JS</span>
-            <span className="font-mono text-sm font-bold">TYPESCRIPT</span>
           </div>
         </div>
       </div>
