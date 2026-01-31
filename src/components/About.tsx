@@ -10,7 +10,7 @@ import {
 const STATS = [
   { label: "Projects Completed", value: "10+" },
   { label: "Technologies", value: "15+" },
-  { label: "Hours Worked", value: "500+" },
+  { label: "Hours Worked", value: "2000+" },
 ];
 
 const CORE_VALUES = [
