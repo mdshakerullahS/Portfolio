@@ -1,6 +1,4 @@
-import { FC } from "react";
-
-const Footer: FC = () => {
+export default function Footer() {
   return (
     <footer>
       <div className="glass mt-12 py-8">
@@ -10,6 +8,4 @@ const Footer: FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

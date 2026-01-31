@@ -5,10 +5,10 @@ import { APIError, APISuccess } from "@/types/api.types";
 import { MessageInput } from "@/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
-import { FC, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const ContactForm: FC = () => {
+export default function ContactForm() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -107,6 +107,4 @@ const ContactForm: FC = () => {
       )}
     </form>
   );
-};
-
-export default ContactForm;
+}

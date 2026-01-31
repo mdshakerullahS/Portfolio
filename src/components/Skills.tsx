@@ -1,7 +1,6 @@
 import { SKILLS } from "@/constants";
-import { FC } from "react";
 
-const Skills: FC = () => {
+export default function Skills() {
   return (
     <section id="stack" className="pt-24">
       <div className="container mx-auto px-6 space-y-12">
@@ -22,6 +21,4 @@ const Skills: FC = () => {
       </div>
     </section>
   );
-};
-
-export default Skills;
+}

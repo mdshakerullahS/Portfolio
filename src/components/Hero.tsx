@@ -1,9 +1,8 @@
-import { FC } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { SOCIAL_LINKS } from "@/constants";
 
-const Hero: FC = () => {
+export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32">
       {/* Animated Gradient Blobs */}
@@ -86,6 +85,4 @@ const Hero: FC = () => {
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

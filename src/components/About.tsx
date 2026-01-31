@@ -6,9 +6,7 @@ import {
   MonitorSmartphone,
   CheckCircle2,
 } from "lucide-react";
-import { FC } from "react";
 
-// 1. Extracted Data for easier maintenance
 const STATS = [
   { label: "Projects Completed", value: "10+" },
   { label: "Technologies", value: "15+" },
@@ -38,7 +36,7 @@ const CORE_VALUES = [
   },
 ];
 
-const About: FC = () => {
+export default function About() {
   return (
     <section
       id="about"
@@ -127,6 +125,4 @@ const About: FC = () => {
       </div>
     </section>
   );
-};
-
-export default About;
+}

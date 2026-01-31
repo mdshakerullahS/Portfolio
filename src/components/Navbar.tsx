@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
-const Navbar: FC = () => {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
@@ -87,6 +87,4 @@ const Navbar: FC = () => {
       )}
     </nav>
   );
-};
-
-export default Navbar;
+}

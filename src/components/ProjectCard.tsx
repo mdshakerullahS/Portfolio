@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { Project } from "@/types/types";
 import Link from "next/link";
@@ -8,7 +7,7 @@ interface ProjectCardProps {
   project: Project;
 }
 
-const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
+export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="group relative glass rounded-2xl overflow-hidden hover:border-[#00f2ff]/50 transition-all duration-500 hover:-translate-y-2">
       <div className="overflow-hidden aspect-video">
@@ -57,6 +56,4 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
       </div>
     </div>
   );
-};
-
-export default ProjectCard;
+}

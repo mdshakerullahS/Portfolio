@@ -1,8 +1,7 @@
 import { PROJECTS } from "@/constants";
 import ProjectCard from "./ProjectCard";
-import { FC } from "react";
 
-const Projects: FC = () => {
+export default function Projects() {
   return (
     <section id="projects" className="pt-24">
       <div className="container mx-auto px-6 space-y-12">
@@ -18,6 +17,4 @@ const Projects: FC = () => {
       </div>
     </section>
   );
-};
-
-export default Projects;
+}

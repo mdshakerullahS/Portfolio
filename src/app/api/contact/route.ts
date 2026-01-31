@@ -5,9 +5,9 @@ import { treeifyError } from "zod";
 import { APIError, APISuccess } from "@/types/api.types";
 import { sendMail } from "@/services/email.service";
 
-export const POST = async (
-  req: Request
-): Promise<NextResponse<APISuccess | APIError>> => {
+export async function POST(
+  req: Request,
+): Promise<NextResponse<APISuccess | APIError>> {
   let body: MessageInput;
 
   try {
@@ -15,7 +15,7 @@ export const POST = async (
   } catch {
     return NextResponse.json(
       { success: false, message: "Invalid JSON body" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -28,7 +28,7 @@ export const POST = async (
         message: "Validation failed",
         errors: treeifyError(result.error),
       },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -36,6 +36,6 @@ export const POST = async (
 
   return NextResponse.json(
     { success: true, message: "Message sent successfully" },
-    { status: 201 }
+    { status: 201 },
   );
-};
+}

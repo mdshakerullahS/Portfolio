@@ -1,10 +1,9 @@
 import { SOCIAL_LINKS } from "@/constants";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { FC } from "react";
 import ContactForm from "./ContactForm";
 
-const Contact: FC = () => {
+export default function Contact() {
   return (
     <section id="contact" className="pt-24 border-t border-white/5">
       <div className="container mx-auto px-6 ">
@@ -51,6 +50,4 @@ const Contact: FC = () => {
       </div>
     </section>
   );
-};
-
-export default Contact;
+}
