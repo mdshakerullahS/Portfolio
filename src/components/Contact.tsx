@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <section id="contact" className="pt-24 border-t border-white/5">
       <div className="container mx-auto px-6 ">
-        <div className="flex flex-col md:flex-row gap-12 md:gap-40 items-center justify-center">
+        <div className="flex flex-col md:flex-row gap-12 md:gap-4 lg:40 items-center justify-center">
           <div>
             <h2 className="text-2xl md:text-5xl text-center md:text-left font-black italic mb-12 tracking-tighter leading-none">
               LET'S <span className="md:block text-blue-400">CONNECT.</span>
