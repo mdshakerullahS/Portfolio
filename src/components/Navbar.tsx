@@ -83,6 +83,14 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+          <Link
+            key="Contact"
+            href="/#contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-xl font-bold text-gray-300 hover:text-blue-400"
+          >
+            Contact Me
+          </Link>
         </div>
       )}
     </nav>
