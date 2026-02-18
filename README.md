@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Welcome to my personal portfolio website! This project showcases my **full-stack web development skills**, projects, and experience.
+Welcome to my personal portfolio website! This project showcases my **full-stack web development skills, projects, and experience**.
 
 ---
 
@@ -20,7 +20,7 @@ This is my **personal portfolio website**, built to showcase:
 - My **experience and achievements**
 - Easy ways to **contact or connect with me**
 
-The website is fully **responsive**, **fast**, and designed with a modern aesthetic.
+The website is fully **responsive**, **performance-optimized**, and designed with a modern and clean user experience.
 
 ---
 
@@ -28,6 +28,7 @@ The website is fully **responsive**, **fast**, and designed with a modern aesthe
 
 - Next.js
 - React
+- Motion (formerly Framer Motion)
 - TypeScript
 - CSS / Tailwind CSS
 - Git & GitHub
@@ -58,10 +59,11 @@ portfolio/
 ## ⚡ Features
 
 - Responsive design for all devices
-- Fast loading and optimized
-- Modern UI with clean navigation
-- Easy to update for new projects
-- Contact and social links integrated
+- Fast loading and performance optimized
+- Modern UI with clean and intuitive navigation
+- Smooth animations powered by Motion (formerly Framer Motion)
+- Easy to update and extend with new projects
+- Contact form and social links integrated
 
 ---
 
