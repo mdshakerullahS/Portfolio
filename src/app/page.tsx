@@ -8,7 +8,7 @@ import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
-    <div className="cyber-grid">
+    <div className="max-w-7xl relative cyber-grid mx-auto overflow-hidden">
       <Navbar />
       <main>
         <Hero />
