@@ -112,14 +112,14 @@ export default function Skills() {
     <section id="stack" ref={sectionRef} className="pt-24">
       <div className="container mx-auto px-6 space-y-12">
         <ScrollItem index={0} sectionRef={sectionRef}>
-          <motion.h2
+          <motion.p
             initial={{ y: 20 }}
             whileInView={{ y: 0 }}
             transition={{ duration: 0.3 }}
             className="text-2xl md:text-5xl text-center font-black italic"
           >
             TECHNICAL <span className="text-blue-400">STACK</span>
-          </motion.h2>
+          </motion.p>
         </ScrollItem>
 
         <div className="flex flex-col gap-4 md:gap-6 mask-[linear-gradient(to_right,transparent,#0a0a0a_15%,#0a0a0a_85%,transparent)]">
