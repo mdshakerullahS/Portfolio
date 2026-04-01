@@ -4,168 +4,169 @@ import { messageSchema } from "@/schemas/message.schema";
 import { APIError, APISuccess } from "@/types/api.types";
 import { MessageInput } from "@/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2 } from "lucide-react";
-import { ReactNode, RefObject, useRef, useState } from "react";
-import { FieldError, useForm } from "react-hook-form";
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from "motion/react";
-
-interface ScrollItemProps {
-  children: ReactNode;
-  index: number;
-  sectionRef: RefObject<HTMLFormElement | null>;
-  className?: string;
-}
-
-function showError(field: FieldError) {
-  return <p className="text-red-500 text-sm">{field.message}</p>;
-}
-
-function ScrollItem({
-  children,
-  index,
-  sectionRef,
-  className,
-}: ScrollItemProps) {
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const start = index * 0.05;
-  const midStart = start + 0.3;
-  const midEnd = start + 0.55;
-  const end = start + 0.8;
-
-  const keyframe = [start, midStart, midEnd, end];
-
-  const scale = useTransform(scrollYProgress, keyframe, [0.9, 1, 1, 0.9]);
-  const opacity = useTransform(scrollYProgress, keyframe, [0, 1, 1, 0]);
-  const blur = useTransform(scrollYProgress, keyframe, [4, 0, 0, 4]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-      whileInView={{
-        y: 0,
-        transition: {
-          duration: 0.3,
-          delay: (index + 1) * 0.2,
-          ease: [0.21, 0.47, 0.32, 0.98],
-        },
-      }}
-      style={{ scale, opacity, filter: useMotionTemplate`blur(${blur}px)` }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { Loader2, CheckCircle2, AlertCircle, Send } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function ContactForm() {
-  const sectionRef = useRef<HTMLFormElement>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [serverMsg, setServerMsg] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isSubmitting },
     reset,
   } = useForm<MessageInput>({
     resolver: zodResolver(messageSchema),
-    mode: "onChange",
+    mode: "onTouched", // Validates as user leaves field for better UX
   });
 
-  const registerWithClear = (name: keyof MessageInput) =>
-    register(name, {
-      onChange: () => {
-        setErrorMessage(null);
-        setSuccessMessage(null);
-      },
-    });
-
   const onSubmit = async (data: MessageInput) => {
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    setStatus("idle");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    const result: APISuccess | APIError = await res.json();
+      const result: APISuccess | APIError = await res.json();
 
-    if (!result.success) {
-      setErrorMessage(result.message || "Something went wrong");
-      return;
+      if (!res.ok || !result.success) {
+        setStatus("error");
+        setServerMsg(
+          result.message || "Something went wrong. Please try again.",
+        );
+        return;
+      }
+
+      setStatus("success");
+      setServerMsg("Message received! I'll get back to you within 24 hours.");
+      reset();
+    } catch {
+      setStatus("error");
+      setServerMsg("Network error. Please check your connection.");
     }
-
-    setSuccessMessage(result.message);
-    reset();
   };
 
   return (
-    <form
-      ref={sectionRef}
-      onSubmit={handleSubmit(onSubmit)}
-      className="space-y-8"
-    >
-      <ScrollItem index={0} sectionRef={sectionRef} className="space-y-2">
-        <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* Input Group: Name */}
+      <div className="space-y-2">
+        <label
+          htmlFor="name"
+          className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1"
+        >
           Full Name
         </label>
         <input
+          id="name"
           type="text"
-          placeholder="John Doe"
-          {...registerWithClear("name")}
-          className="w-full bg-transparent border-b border-white/10 pb-4 outline-none focus:border-blue-400 transition-colors"
+          placeholder="e.g. Alex Rivera"
+          {...register("name")}
+          className={`w-full bg-white/3 border-b ${errors.name ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all placeholder:text-slate-600 text-white`}
         />
-        {errors.name && showError(errors.name)}
-      </ScrollItem>
+        {errors.name && (
+          <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+            <AlertCircle size={12} /> {errors.name.message}
+          </p>
+        )}
+      </div>
 
-      <ScrollItem index={1} sectionRef={sectionRef} className="space-y-2">
-        <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
+      {/* Input Group: Email */}
+      <div className="space-y-2">
+        <label
+          htmlFor="email"
+          className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1"
+        >
           Email Address
         </label>
         <input
+          id="email"
           type="email"
-          placeholder="john@company.com"
-          {...registerWithClear("email")}
-          className="w-full bg-transparent border-b border-white/10 pb-4 outline-none focus:border-blue-400 transition-colors"
+          placeholder="name@company.com"
+          {...register("email")}
+          className={`w-full bg-white/3 border-b ${errors.email ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all placeholder:text-slate-600 text-white`}
         />
-        {errors.email && showError(errors.email)}
-      </ScrollItem>
-      <ScrollItem index={2} sectionRef={sectionRef} className="space-y-2">
-        <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500">
-          Message
+        {errors.email && (
+          <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+            <AlertCircle size={12} /> {errors.email.message}
+          </p>
+        )}
+      </div>
+
+      {/* Input Group: Message */}
+      <div className="space-y-2">
+        <label
+          htmlFor="message"
+          className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1"
+        >
+          Project Details
         </label>
         <textarea
-          placeholder="Tell me about your project..."
-          {...registerWithClear("message")}
-          className="w-full bg-transparent border-b border-white/10 pb-4 outline-none focus:border-blue-400 transition-colors h-32"
+          id="message"
+          placeholder="Briefly describe your goals, timeline, and tech stack..."
+          {...register("message")}
+          className={`w-full bg-white/3 border-b ${errors.message ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all h-32 resize-none placeholder:text-slate-600 text-white`}
         />
-        {errors.message && showError(errors.message)}
-      </ScrollItem>
-      <ScrollItem index={3} sectionRef={sectionRef} className="space-y-2">
+        {errors.message && (
+          <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+            <AlertCircle size={12} /> {errors.message.message}
+          </p>
+        )}
+      </div>
+
+      {/* Submit Area */}
+      <div className="pt-4 space-y-4">
         <button
-          disabled={!isValid || isSubmitting}
-          className="w-full flex items-center justify-center py-5 bg-white disabled:bg-slate-400 text-black disabled:text-slate-900 font-bold rounded-2xl hover:bg-blue-400 transition-all cursor-pointer disabled:cursor-not-allowed"
+          type="submit"
+          disabled={isSubmitting}
+          className="group w-full flex items-center justify-center gap-3 py-4 bg-white hover:bg-blue-500 disabled:bg-slate-700 text-black hover:text-white font-bold rounded-xl transition-all duration-300 transform active:scale-[0.98]"
         >
           {isSubmitting ? (
-            <Loader2 className="animate-spin" />
+            <Loader2 className="animate-spin" size={20} />
           ) : (
-            "SEND TRANSMISSION"
+            <>
+              <span>SEND MESSAGE</span>
+              <Send
+                size={16}
+                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+              />
+            </>
           )}
         </button>
-      </ScrollItem>
 
-      {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
-      {successMessage && (
-        <p className="text-green-500 text-sm">{successMessage}</p>
-      )}
+        {/* Trust Microcopy */}
+        <p className="text-center text-[10px] text-slate-500 font-medium tracking-wide">
+          NO SPAM. JUST A DIRECT LINE TO MY INBOX.
+        </p>
+
+        {/* Feedback Messages */}
+        <AnimatePresence mode="wait">
+          {status === "success" && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm flex items-center gap-3"
+            >
+              <CheckCircle2 size={18} />
+              {serverMsg}
+            </motion.div>
+          )}
+          {status === "error" && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-center gap-3"
+            >
+              <AlertCircle size={18} />
+              {serverMsg}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </form>
   );
 }

@@ -1,156 +1,93 @@
 "use client";
 
-import { SKILLS } from "@/constants";
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from "motion/react";
-import { ReactNode, RefObject, useEffect, useRef, useState } from "react";
-
-interface MarqueeRowProps {
-  sectionRef: RefObject<HTMLElement | null>;
-  index: number;
-  x: string[];
-}
-
-interface ScrollItemProps {
-  children: ReactNode;
-  index: number;
-  sectionRef: RefObject<HTMLElement | null>;
-  className?: string;
-}
-
-function MarqueeRow({ sectionRef, index, x }: MarqueeRowProps) {
-  return (
-    <ScrollItem
-      index={index + 1}
-      sectionRef={sectionRef}
-      className="flex overflow-hidden"
-    >
-      <motion.div
-        animate={{ x }}
-        transition={{ ease: "linear", duration: 72, repeat: Infinity }}
-        className="flex flex-nowrap gap-4 md:gap-6 pr-4 md:pr-6"
-      >
-        {[...SKILLS, ...SKILLS].map((skill, i) => (
-          <div
-            key={i}
-            className="glass px-4 md:px-8 py-2 md:py-4 rounded-xl md:rounded-2xl font-mono hover:border-blue-400 transition-all text-center"
-          >
-            <h4 className="font-bold text-sm md:text-lg whitespace-nowrap">
-              {skill}
-            </h4>
-          </div>
-        ))}
-      </motion.div>
-    </ScrollItem>
-  );
-}
-
-function ScrollItem({
-  children,
-  index,
-  sectionRef,
-  className,
-}: ScrollItemProps) {
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const start = index * 0.05;
-  const midStart = start + 0.3;
-  const midEnd = start + 0.55;
-  const end = start + 0.8;
-
-  const keyframe = [start, midStart, midEnd, end];
-
-  const scale = useTransform(scrollYProgress, keyframe, [0.9, 1, 1, 0.9]);
-  const opacity = useTransform(scrollYProgress, keyframe, [0, 1, 1, 0]);
-  const blur = useTransform(scrollYProgress, keyframe, [4, 0, 0, 4]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-      animate={{
-        y: 0,
-        transition: {
-          duration: 0.3,
-          delay: (index + 1) * 0.2,
-          ease: [0.21, 0.47, 0.32, 0.98],
-        },
-      }}
-      style={{ scale, opacity, filter: useMotionTemplate`blur(${blur}px)` }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { INFRA_SKILLS, SKILL_GROUPS } from "@/constants";
+import { Zap } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function Skills() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const [isSmall, setIsSmall] = useState<boolean>(false);
-  const [isMedium, setIsMedium] = useState<boolean>(false);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsSmall(window.innerWidth <= 576);
-      setIsMedium(window.innerWidth > 576 && window.innerWidth <= 768);
-    };
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
-
-  const marqueeRows = isSmall ? 4 : isMedium ? 3 : 2;
-
   return (
-    <section id="stack" ref={sectionRef} className="pt-24">
-      <div className="container mx-auto px-6 space-y-12">
-        <ScrollItem index={0} sectionRef={sectionRef}>
-          <motion.p
-            initial={{ y: 20 }}
-            whileInView={{ y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-2xl md:text-5xl text-center font-black italic"
-          >
-            TECHNICAL <span className="text-blue-400">STACK</span>
-          </motion.p>
-        </ScrollItem>
-
-        <div className="flex flex-col gap-4 md:gap-6 mask-[linear-gradient(to_right,transparent,#0a0a0a_15%,#0a0a0a_85%,transparent)]">
-          {Array.from({ length: marqueeRows }).map((_, i) => {
-            function getX() {
-              if (isSmall) {
-                return i == 0
-                  ? ["0%", "-25%"]
-                  : i === 1
-                    ? ["-50%", "-25%"]
-                    : i === 2
-                      ? ["-25%", "-50%"]
-                      : ["-75%", "0%"];
-              } else if (isMedium) {
-                return i === 0
-                  ? ["0%", "-33.33%"]
-                  : i === 1
-                    ? ["-66.66%", "-33.33%"]
-                    : ["-33.33%%", "-66.66%"];
-              } else {
-                return i === 0 ? ["0%", "-50%"] : ["-50%", "0%"];
-              }
-            }
-
-            const x = getX();
-
-            return (
-              <MarqueeRow key={i} sectionRef={sectionRef} index={i} x={x} />
-            );
-          })}
+    <section id="skills" className="py-16 bg-black">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="mb-12 space-y-4">
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
+            How I Build{" "}
+            <span className="text-blue-500 italic">Applications.</span>
+          </h2>
+          <p className="text-slate-500 text-lg max-w-xl font-medium">
+            I use these tools to build full-stack applications with clean
+            architecture, reliable APIs, and scalable backend systems.
+          </p>
         </div>
+
+        {/* Main Category Groups */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {SKILL_GROUPS.map((group, i) => (
+            <motion.div
+              key={group.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-8 rounded-3xl bg-white/2 border border-white/5 hover:border-white/10 transition-all group"
+            >
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-2 rounded-lg bg-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-400 transition-colors">
+                  <group.icon.name
+                    className={`w-5 h-5 text-${group.icon.color}-400`}
+                  />
+                </div>
+                <h3 className="text-white font-bold tracking-tight">
+                  {group.title}
+                </h3>
+              </div>
+
+              <div className="space-y-6">
+                {group.skills.map((skill) => (
+                  <div key={skill.name} className="group/item">
+                    <h4 className="text-sm font-bold text-slate-200 mb-1 group-hover/item:text-blue-400 transition-colors">
+                      {skill.name}
+                    </h4>
+                    <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">
+                      {skill.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Flat Bottom Bar: DevOps & Workflow */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="p-6 rounded-2xl bg-linear-to-r from-blue-500/5 via-transparent to-transparent border border-white/5"
+        >
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="flex items-center gap-3 shrink-0">
+              <Zap className="w-5 h-5 text-blue-500" />
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.3em]">
+                Deployment Workflow
+              </span>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-3">
+              {INFRA_SKILLS.map((infra) => (
+                <div
+                  key={infra.name}
+                  className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-slate-300 hover:border-blue-500/30 transition-all"
+                >
+                  <span className="text-slate-500">
+                    <infra.icon className="w-4 h-4" />
+                  </span>
+                  {infra.name}
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
