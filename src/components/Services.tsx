@@ -1,70 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
-import {
-  Cpu,
-  Zap,
-  ShoppingCart,
-  Database,
-  TrendingUp,
-  ArrowRight,
-  Server,
-} from "lucide-react";
-
-const SERVICES = [
-  {
-    title: "Full-Stack Development",
-    description:
-      "Turning complex ideas into polished digital products. I build fast, responsive, and type-safe applications from the ground up.",
-    icon: <Cpu className="w-6 h-6" />,
-    features: [
-      "Next.js Architecture",
-      "Custom API Logic",
-      "Scalable State Management",
-    ],
-    color: "group-hover:text-blue-400",
-  },
-  {
-    title: "Scalable Infrastructure",
-    description:
-      "Stop worrying about downtime. I setup robust Docker environments and CI/CD pipelines to keep your app running 24/7.",
-    icon: <Server className="w-6 h-6" />,
-    features: ["Docker & VPS", "GitHub Actions", "Automated Backups"],
-    color: "group-hover:text-emerald-400",
-  },
-  {
-    title: "Database Architecture",
-    description:
-      "Data is the heart of your business. I architect high-performance PostgreSQL schemas designed for speed and integrity.",
-    icon: <Database className="w-6 h-6" />,
-    features: ["Relational Design", "Prisma ORM", "Query Optimization"],
-    color: "group-hover:text-cyan-400",
-  },
-  {
-    title: "E-commerce Engines",
-    description:
-      "Built to sell. Secure checkout flows, real-time cart logic, and custom payment integrations that don't break.",
-    icon: <ShoppingCart className="w-6 h-6" />,
-    features: ["Stripe/Auth Integration", "Inventory Sync", "Secure Checkout"],
-    color: "group-hover:text-purple-400",
-  },
-  {
-    title: "Performance Engineering",
-    description:
-      "Speed is a feature. I optimize Core Web Vitals to ensure your site feels instant and ranks higher on Google.",
-    icon: <Zap className="w-6 h-6" />,
-    features: ["Sub-second Loading", "Image Optimization", "Edge Caching"],
-    color: "group-hover:text-yellow-400",
-  },
-  {
-    title: "Conversion-Led Design",
-    description:
-      "Websites that work for you. I build high-intent landing pages designed to turn visitors into paying customers.",
-    icon: <TrendingUp className="w-6 h-6" />,
-    features: ["Service-Industry Focus", "Lead-Gen Forms", "Analytics Setup"],
-    color: "group-hover:text-orange-400",
-  },
-];
+import { ArrowRight } from "lucide-react";
+import { SERVICES } from "@/constants";
 
 export default function Services() {
   return (
@@ -95,7 +33,7 @@ export default function Services() {
               <div
                 className={`mb-6 text-slate-500 transition-all duration-300 transform group-hover:scale-110 ${service.color}`}
               >
-                {service.icon}
+                <service.icon className="w-6 h-6" />
               </div>
 
               <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-tight">

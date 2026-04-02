@@ -7,6 +7,14 @@ export type Icon = ForwardRefExoticComponent<
   Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
 >;
 
+export interface Service {
+  title: string;
+  description: string;
+  icon: Icon;
+  features: string[];
+  color: string;
+}
+
 export interface Project {
   id: string;
   title: string;

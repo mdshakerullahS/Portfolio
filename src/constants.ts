@@ -1,4 +1,10 @@
-import { InfraSkill, Project, SkillGroup, SocialLink } from "./types/types";
+import {
+  InfraSkill,
+  Project,
+  Service,
+  SkillGroup,
+  SocialLink,
+} from "./types/types";
 import {
   Mail,
   Github,
@@ -12,7 +18,66 @@ import {
   GitBranch,
   Workflow,
   CheckCircle,
+  Cpu,
+  Zap,
+  ShoppingCart,
+  TrendingUp,
 } from "lucide-react";
+
+export const SERVICES: Service[] = [
+  {
+    title: "Full-Stack Development",
+    description:
+      "Turning complex ideas into polished digital products. I build fast, responsive, and type-safe applications from the ground up.",
+    icon: Cpu,
+    features: [
+      "Next.js Architecture",
+      "Custom API Logic",
+      "Scalable State Management",
+    ],
+    color: "group-hover:text-blue-400",
+  },
+  {
+    title: "Scalable Infrastructure",
+    description:
+      "Stop worrying about downtime. I setup robust Docker environments and CI/CD pipelines to keep your app running 24/7.",
+    icon: Server,
+    features: ["Docker & VPS", "GitHub Actions", "Automated Backups"],
+    color: "group-hover:text-emerald-400",
+  },
+  {
+    title: "Database Architecture",
+    description:
+      "Data is the heart of your business. I architect high-performance PostgreSQL schemas designed for speed and integrity.",
+    icon: Database,
+    features: ["Relational Design", "Prisma ORM", "Query Optimization"],
+    color: "group-hover:text-cyan-400",
+  },
+  {
+    title: "E-commerce Engines",
+    description:
+      "Built to sell. Secure checkout flows, real-time cart logic, and custom payment integrations that don't break.",
+    icon: ShoppingCart,
+    features: ["Stripe/Auth Integration", "Inventory Sync", "Secure Checkout"],
+    color: "group-hover:text-purple-400",
+  },
+  {
+    title: "Performance Engineering",
+    description:
+      "Speed is a feature. I optimize Core Web Vitals to ensure your site feels instant and ranks higher on Google.",
+    icon: Zap,
+    features: ["Sub-second Loading", "Image Optimization", "Edge Caching"],
+    color: "group-hover:text-yellow-400",
+  },
+  {
+    title: "Conversion-Led Design",
+    description:
+      "Websites that work for you. I build high-intent landing pages designed to turn visitors into paying customers.",
+    icon: TrendingUp,
+    features: ["Service-Industry Focus", "Lead-Gen Forms", "Analytics Setup"],
+    color: "group-hover:text-orange-400",
+  },
+];
 
 export const PROJECTS: Project[] = [
   {
