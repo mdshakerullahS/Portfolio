@@ -60,8 +60,8 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16"
     >
       {/* Static Background Accents */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full" />
+      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full" />
+      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full" />
 
       <div className="container mx-auto px-6 z-10 text-center">
         {/* Availability Badge */}
@@ -83,10 +83,10 @@ export default function Hero() {
         <ScrollItem index={1} sectionRef={sectionRef}>
           <h1 className="text-5xl md:text-8xl font-black mb-6 tracking-tighter leading-[0.9] text-white">
             FULL-STACK <br />
-            <span className="text-blue-500">DEVELOPER.</span>
+            <span className="text-blue-500">DEVELOPER</span>
           </h1>
           <p className="text-xl md:text-2xl font-medium text-slate-300 mb-8 tracking-tight">
-            Building fast, scalable web applications.
+            I build fast, scalable web apps that actually survive production.
           </p>
         </ScrollItem>
 
