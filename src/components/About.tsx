@@ -34,8 +34,8 @@ export default function About() {
           <div className="space-y-4">
             <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">
               Building <span className="text-blue-500 italic">real-world</span>{" "}
-              apps, <br />
-              not just interfaces.
+              apps, not just{" "}
+              <span className="text-slate-400 italic">interfaces.</span>
             </h2>
           </div>
 

@@ -71,9 +71,9 @@ export default function Services() {
     <section id="services" className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="mb-16 max-w-3xl">
+        <div className="mb-16 space-y-4">
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-4">
-            Solutions That <span className="text-blue-500 italic">Scale.</span>
+            Solutions That <span className="text-blue-500 italic"> Scale.</span>
           </h2>
           <p className="text-slate-400 text-lg md:text-xl font-medium leading-tight">
             I build systems designed to perform, endure, and convert. No
