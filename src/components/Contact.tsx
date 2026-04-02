@@ -36,7 +36,7 @@ export default function Contact() {
                   Available for freelance projects and full-stack roles.
                 </p>
 
-                {/* Trust Signal / Reply Expectation */}
+                {/* Reply Expectation */}
                 <div className="flex items-center gap-2 text-white max-w-xl font-medium">
                   <Clock className="w-4 h-4 text-blue-500/50" />
                   <span>Typically respond within 24 hours</span>
@@ -74,7 +74,6 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      {/* Refined Arrow Animation: Slides diagonally from bottom-left */}
                       <ArrowUpRight className="w-5 h-5 text-slate-600 group-hover:text-blue-400 transition-all duration-300 -translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0" />
                     </Link>
                   </motion.div>

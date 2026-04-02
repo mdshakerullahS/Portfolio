@@ -12,7 +12,7 @@ export default function Skills() {
         <div className="mb-12 space-y-4">
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
             How I Build{" "}
-            <span className="text-blue-500 italic">Applications.</span>
+            <span className="text-blue-500 italic"> Applications.</span>
           </h2>
           <p className="text-slate-500 text-lg max-w-xl font-medium">
             I use these tools to build full-stack applications with clean

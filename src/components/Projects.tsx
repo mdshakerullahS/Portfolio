@@ -8,7 +8,6 @@ import { useRef } from "react";
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Simplified scroll intensity to focus on content
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -30,7 +29,7 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* Project Grid - Fixed Stagger Index */}
+        {/* Project Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {PROJECTS.map((project, i) => (
             <motion.div
@@ -40,13 +39,12 @@ export default function Projects() {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  delay: (i % 2) * 0.2, // Stagger based on column
+                  delay: (i % 2) * 0.2,
                   duration: 0.5,
                   ease: "easeOut",
                 },
               }}
               viewport={{ once: true, margin: "-100px" }}
-              // Large projects take full width if marked as featured
             >
               <ProjectCard project={project} />
             </motion.div>

@@ -20,7 +20,7 @@ export default function ContactForm() {
     reset,
   } = useForm<MessageInput>({
     resolver: zodResolver(messageSchema),
-    mode: "onTouched", // Validates as user leaves field for better UX
+    mode: "onTouched",
   });
 
   const onSubmit = async (data: MessageInput) => {

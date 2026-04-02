@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Github } from "lucide-react"; // Added Github icon
+import { Menu, X, Github } from "lucide-react";
 import Link from "next/link";
 import {
   motion,
@@ -75,7 +75,7 @@ export default function Navbar() {
       animate={{
         opacity: 1,
         y: 0,
-        paddingBlock: isScrolled ? 12 : 20, // Adjusted padding for the extra info
+        paddingBlock: isScrolled ? 12 : 20,
         backgroundColor: isScrolled ? "rgba(10,10,12,0.8)" : "rgba(10,10,12,0)",
         backdropFilter: isScrolled ? "blur(12px)" : "blur(0px)",
         borderBottomColor: isScrolled
@@ -89,7 +89,7 @@ export default function Navbar() {
       className="fixed top-0 inset-x-0 z-50 border-b transition-colors"
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo & Role Clarity */}
+        {/* Logo & Role */}
         <Link href="/" className="flex items-center gap-3 group">
           <motion.div
             whileHover={{ scale: 1.05 }}

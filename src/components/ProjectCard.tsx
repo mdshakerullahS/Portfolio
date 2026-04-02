@@ -8,7 +8,6 @@ import Image from "next/image";
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div className="group relative glass h-full flex flex-col rounded-3xl overflow-hidden border border-white/5 hover:border-blue-500/30 transition-all duration-500">
-      {/* Image Container with Featured Badge */}
       <div className="relative overflow-hidden aspect-video">
         <Image
           src={project.image}
@@ -49,12 +48,12 @@ export default function ProjectCard({ project }: { project: Project }) {
           </Link>
         </div>
 
-        {/* Technical Description - Now focuses on "How" and "Result" */}
+        {/* Description */}
         <p className="text-gray-400 text-sm leading-relaxed mb-6 grow">
           {project.description}
         </p>
 
-        {/* Tech Tags - Static for readability, reduced animation overhead */}
+        {/* Tech Tags */}
         <div className="flex flex-wrap gap-x-4 gap-y-2 mb-8 border-t border-white/5 pt-6">
           {project.tags.map((tag) => (
             <span

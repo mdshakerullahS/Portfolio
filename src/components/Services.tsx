@@ -70,7 +70,7 @@ export default function Services() {
   return (
     <section id="services" className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Strengthened Section Hook */}
+        {/* Section Header */}
         <div className="mb-16 max-w-3xl">
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-4">
             Solutions That <span className="text-blue-500 italic">Scale.</span>
@@ -81,7 +81,7 @@ export default function Services() {
           </p>
         </div>
 
-        {/* Service Grid - Tighter Spacing */}
+        {/* Service Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {SERVICES.map((service, i) => (
             <motion.div
@@ -119,7 +119,7 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Strengthened CTA */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

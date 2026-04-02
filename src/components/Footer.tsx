@@ -39,7 +39,7 @@ export default function Footer() {
             </span>
           </div>
 
-          {/* Nav Links */}
+          {/* Social Links */}
           <div className="flex items-center gap-6">
             {SOCIAL_LINKS.map((link) => (
               <Link

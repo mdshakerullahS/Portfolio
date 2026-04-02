@@ -24,7 +24,6 @@ function ScrollItem({
     offset: ["start end", "end start"],
   });
 
-  // Reduced complexity of keyframes for a smoother feel
   const scale = useTransform(
     scrollYProgress,
     [0, 0.2, 0.8, 1],
@@ -40,7 +39,7 @@ function ScrollItem({
         y: 0,
         transition: {
           duration: 0.4,
-          delay: index * 0.1, // Snappier staggered entrance
+          delay: index * 0.1,
           ease: "easeOut",
         },
       }}
@@ -98,13 +97,13 @@ export default function Hero() {
             applications using modern technologies. I&apos;ve built real
             projects with authentication, dashboards, and APIs.
           </p>
-          {/* Trust Line */}
+
           <p className="text-sm font-mono text-slate-500 mb-10">
             Next.js • TypeScript • Node.js • PostgreSQL • Docker
           </p>
         </ScrollItem>
 
-        {/* Dual CTAs */}
+        {/* CTAs */}
         <ScrollItem
           index={3}
           sectionRef={sectionRef}
@@ -127,7 +126,7 @@ export default function Hero() {
           </Link>
         </ScrollItem>
 
-        {/* Socials - Simplified entrance */}
+        {/* Socials */}
         <div className="mt-12 flex items-center justify-center gap-4">
           {SOCIAL_LINKS.map((social, i) => (
             <motion.div
