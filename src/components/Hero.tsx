@@ -98,7 +98,7 @@ export default function Hero() {
             projects with authentication, dashboards, and APIs.
           </p>
 
-          <p className="text-sm font-mono text-slate-500 mb-10">
+          <p className="text-sm font-mono text-gray-400 mb-10">
             Next.js • TypeScript • Node.js • PostgreSQL • Docker
           </p>
         </ScrollItem>
@@ -111,6 +111,7 @@ export default function Hero() {
         >
           <Link
             href="#projects"
+            aria-label="Projects section"
             className="group flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-xl transition-all hover:bg-blue-50 text-sm"
           >
             VIEW PROJECTS
@@ -119,6 +120,7 @@ export default function Hero() {
 
           <Link
             href="#contact"
+            aria-label="Contact section"
             className="flex items-center gap-2 px-8 py-4 bg-transparent border border-white/10 text-white font-bold rounded-xl transition-all hover:bg-white/5 hover:border-white/20 text-sm"
           >
             <Mail className="w-4 h-4" />
@@ -138,7 +140,7 @@ export default function Hero() {
               <Link
                 href={social.href}
                 target="_blank"
-                className="text-slate-500 hover:text-blue-400 transition-colors"
+                className="text-gray-400 hover:text-blue-400 transition-colors"
                 aria-label={social.label}
               >
                 <social.icon size={22} />

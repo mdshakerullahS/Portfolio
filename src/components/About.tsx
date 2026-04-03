@@ -89,9 +89,9 @@ export default function About() {
 
           {/* What I Actually Do */}
           <div className="space-y-6">
-            <h4 className="text-white font-bold text-sm tracking-widest uppercase flex items-center gap-2">
+            <h3 className="text-white font-bold text-sm tracking-widest uppercase flex items-center gap-2">
               <span className="w-1 h-3 bg-blue-500" /> What I Actually Do
-            </h4>
+            </h3>
 
             <div className="grid sm:grid-cols-2 gap-4 pt-2">
               {[

@@ -14,7 +14,7 @@ export default function Skills() {
             How I Build{" "}
             <span className="text-blue-500 italic"> Applications.</span>
           </h2>
-          <p className="text-slate-500 text-lg max-w-xl font-medium">
+          <p className="text-gray-400 text-lg max-w-xl font-medium">
             I use these tools to build full-stack applications with clean
             architecture, reliable APIs, and scalable backend systems.
           </p>
@@ -48,7 +48,7 @@ export default function Skills() {
                     <h4 className="text-sm font-bold text-slate-200 mb-1 group-hover/item:text-blue-400 transition-colors">
                       {skill.name}
                     </h4>
-                    <p className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">
+                    <p className="text-[11px] font-mono text-gray-400 uppercase tracking-wider">
                       {skill.detail}
                     </p>
                   </div>
@@ -79,7 +79,7 @@ export default function Skills() {
                   key={infra.name}
                   className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/5 rounded-xl text-xs text-slate-300 hover:border-blue-500/30 transition-all"
                 >
-                  <span className="text-slate-500">
+                  <span className="text-gray-400">
                     <infra.icon className="w-4 h-4" />
                   </span>
                   {infra.name}

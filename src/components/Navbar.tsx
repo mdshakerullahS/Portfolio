@@ -90,7 +90,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo & Role */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link
+          href="/"
+          aria-label="Logo"
+          className="flex items-center gap-3 group"
+        >
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -122,6 +126,7 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
+                  aria-label={link.name}
                   className="text-gray-400 hover:text-blue-400 transition-colors font-mono font-semibold text-[11px] tracking-widest uppercase relative"
                 >
                   {link.name}
@@ -139,6 +144,7 @@ export default function Navbar() {
           <div className="flex items-center gap-5">
             <Link
               href="https://github.com/mdshakerullahS"
+              aria-label="GitHub profile"
               target="_blank"
               className="text-gray-400 hover:text-white transition-colors"
             >
@@ -148,6 +154,7 @@ export default function Navbar() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="#contact"
+                aria-label="Contact section"
                 className="px-5 py-2.5 rounded-full bg-blue-500 text-white hover:bg-blue-600 transition-all font-bold text-xs uppercase tracking-wider"
               >
                 Hire Me
@@ -203,6 +210,7 @@ export default function Navbar() {
               <motion.div key={link.name} variants={mobileLinkVariants}>
                 <Link
                   href={link.href}
+                  aria-label={link.name}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-2xl font-bold text-gray-300 hover:text-blue-400 block"
                 >
@@ -217,12 +225,14 @@ export default function Navbar() {
             >
               <Link
                 href="https://github.com/mdshakerullahS"
+                aria-label="GitHub profile"
                 className="flex items-center gap-2 text-gray-400"
               >
                 <Github size={20} /> GitHub Profile
               </Link>
               <Link
                 href="#contact"
+                aria-label="Contact section"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full py-4 bg-blue-500 text-white rounded-xl text-center font-bold text-lg"
               >

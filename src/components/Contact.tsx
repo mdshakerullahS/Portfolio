@@ -32,7 +32,7 @@ export default function Contact() {
                 </h2>
 
                 {/* Positioning Line */}
-                <p className="text-slate-500 text-lg max-w-80 md:max-w-xl font-medium">
+                <p className="text-gray-400 text-lg max-w-80 md:max-w-xl font-medium">
                   Available for freelance projects and full-stack roles.
                 </p>
 
@@ -57,15 +57,16 @@ export default function Contact() {
                   >
                     <Link
                       href={link.href}
+                      aria-label={`${link.label} profile`}
                       target="_blank"
                       className="group flex items-center justify-between p-5 rounded-2xl transition-all duration-300 hover:bg-blue-500/10 hover:border-blue-500/50 bg-white/2 border border-white/5"
                     >
                       <div className="flex items-center gap-4">
-                        <div className="p-2 rounded-lg text-slate-500 group-hover:text-blue-400 transition-all duration-300">
+                        <div className="p-2 rounded-lg text-gray-400 group-hover:text-blue-400 transition-all duration-300">
                           <link.icon />
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
                             {link.label}
                           </span>
                           <span className="text-sm md:text-lg font-medium text-slate-300 group-hover:text-white transition-all duration-300">
@@ -74,7 +75,7 @@ export default function Contact() {
                         </div>
                       </div>
 
-                      <ArrowUpRight className="w-5 h-5 text-slate-600 group-hover:text-blue-400 transition-all duration-300 -translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0" />
+                      <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-all duration-300 -translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0" />
                     </Link>
                   </motion.div>
                 );

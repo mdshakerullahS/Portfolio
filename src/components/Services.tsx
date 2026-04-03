@@ -31,7 +31,7 @@ export default function Services() {
               className="group flex flex-col"
             >
               <div
-                className={`mb-6 text-slate-500 transition-all duration-300 transform group-hover:scale-110 ${service.color}`}
+                className={`mb-6 text-gray-400 transition-all duration-300 transform group-hover:scale-110 ${service.color}`}
               >
                 <service.icon className="w-6 h-6" />
               </div>
@@ -39,7 +39,7 @@ export default function Services() {
               <h3 className="text-lg font-bold text-white mb-2 uppercase tracking-tight">
                 {service.title}
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-6 max-w-[90%]">
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-[90%]">
                 {service.description}
               </p>
 
@@ -47,7 +47,7 @@ export default function Services() {
                 {service.features.map((feature) => (
                   <span
                     key={feature}
-                    className="text-[10px] font-mono tracking-widest px-2 py-1 rounded border bg-transparent border-white/5 text-slate-500"
+                    className="text-[10px] font-mono tracking-widest px-2 py-1 rounded border bg-transparent border-white/5 text-gray-400"
                   >
                     {feature}
                   </span>
@@ -67,7 +67,7 @@ export default function Services() {
             <h4 className="text-white font-bold text-xl">
               Have a project in mind?
             </h4>
-            <p className="text-slate-500 text-sm italic">
+            <p className="text-gray-400 text-sm italic">
               Let&apos;s build something that scales and survives the real
               world.
             </p>

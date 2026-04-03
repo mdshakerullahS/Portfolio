@@ -66,7 +66,7 @@ export default function ContactForm() {
           type="text"
           placeholder="e.g. Alex Rivera"
           {...register("name")}
-          className={`w-full bg-white/3 border-b ${errors.name ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all placeholder:text-slate-600 text-white`}
+          className={`w-full bg-white/3 border-b ${errors.name ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all placeholder:text-slate-400 text-white`}
         />
         {errors.name && (
           <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
@@ -88,7 +88,7 @@ export default function ContactForm() {
           type="email"
           placeholder="name@company.com"
           {...register("email")}
-          className={`w-full bg-white/3 border-b ${errors.email ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all placeholder:text-slate-600 text-white`}
+          className={`w-full bg-white/3 border-b ${errors.email ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all placeholder:text-slate-400 text-white`}
         />
         {errors.email && (
           <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
@@ -109,7 +109,7 @@ export default function ContactForm() {
           id="message"
           placeholder="Briefly describe your goals, timeline, and tech stack..."
           {...register("message")}
-          className={`w-full bg-white/3 border-b ${errors.message ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all h-32 resize-none placeholder:text-slate-600 text-white`}
+          className={`w-full bg-white/3 border-b ${errors.message ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all h-32 resize-none placeholder:text-slate-400 text-white`}
         />
         {errors.message && (
           <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
@@ -139,7 +139,7 @@ export default function ContactForm() {
         </button>
 
         {/* Trust Microcopy */}
-        <p className="text-center text-[10px] text-slate-500 font-medium tracking-wide">
+        <p className="text-center text-[10px] text-gray-400 font-medium tracking-wide">
           NO SPAM. JUST A DIRECT LINE TO MY INBOX.
         </p>
 

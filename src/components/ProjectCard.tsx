@@ -20,6 +20,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
           <Link
             href={project.link!}
+            aria-label={project.title}
             target="_blank"
             className="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform"
           >
@@ -41,6 +42,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           </div>
           <Link
             href={project.github!}
+            aria-label={`${project.title} GitHub repo`}
             target="_blank"
             className="text-gray-500 hover:text-white transition-colors"
           >
@@ -68,6 +70,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {/* Primary CTA: Live Demo */}
         <Link
           href={project.link!}
+          aria-label={`${project.title} live demo`}
           target="_blank"
           className="w-full py-3 bg-white/5 hover:bg-white text-white hover:text-black border border-white/10 rounded-xl text-center text-xs font-bold tracking-widest uppercase transition-all duration-300"
         >

@@ -23,7 +23,7 @@ export default function Projects() {
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
             What I&apos;ve <span className="text-blue-500 italic">Build.</span>
           </h2>
-          <p className="text-slate-500 text-lg max-w-xl font-medium">
+          <p className="text-gray-400 text-lg max-w-xl font-medium">
             Building production-ready applications with a focus on performance,
             scalability, and user conversion.
           </p>

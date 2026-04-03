@@ -45,6 +45,7 @@ export default function Footer() {
               <Link
                 key={link.label}
                 href={link.href}
+                aria-label={`${link.label} profile`}
                 target="_blank"
                 className="text-slate-400 hover:text-white text-sm font-mono transition-colors"
               >
@@ -57,7 +58,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto mt-12 flex justify-center">
-        <p className="text-slate-600 text-[11px] font-mono tracking-wider">
+        <p className="text-slate-400 text-[11px] font-mono tracking-wider">
           &copy; {currentYear} — BUILT WITH NEXT.JS & TYPESCRIPT
         </p>
       </div>
