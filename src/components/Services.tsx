@@ -13,9 +13,9 @@ export default function Services() {
           <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase mb-4">
             Solutions That <span className="text-blue-500 italic"> Scale.</span>
           </h2>
-          <p className="text-slate-400 text-lg md:text-xl font-medium leading-tight">
-            I build systems designed to perform, endure, and convert. No
-            fluff—just production-ready engineering.
+          <p className="text-slate-400 text-lg font-medium leading-tight">
+            I build systems designed to perform, endure, and convert. No fluff,
+            just production-ready engineering.
           </p>
         </div>
 
