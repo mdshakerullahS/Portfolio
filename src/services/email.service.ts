@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 export const sendMail = async ({
   name,
   email,
+  projectType,
   message,
 }: MessageInput): Promise<void> => {
   const maiTransporter = nodemailer.createTransport({
@@ -17,6 +18,6 @@ export const sendMail = async ({
   await maiTransporter.sendMail({
     to: process.env.EMAIL_USER,
     subject: `New message from ${name.split(" ")[0]}`,
-    html: `<h3>${name}</h3><a href="mailto:${email}">${email}</a><br><p>${message}</p>`,
+    html: `<h3>${name}</h3><a href="mailto:${email}">${email}</a><br><h4>Project Type: ${projectType}</h4><p>${message}</p>`,
   });
 };

@@ -1,24 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Mono, Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 import React from "react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const mono = DM_Mono({
+  weight: ["300", "400", "500"],
   subsets: ["latin"],
+  variable: "--font-mono",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const syne = Syne({ subsets: ["latin"], variable: "--font-syne" });
+
+const sans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "https://shakerullah.vercel.app";
 const TITLE =
-  "Shakerullah - Full-Stack Developer | Building fast, Scalable Web apps that actually survive production.";
+  "Shakerullah — Full-Stack Developer for Startups & Small Businesses";
 const DESCRIPTION =
-  "Full-stack developer focused on building fast, scalable web applications using modern technologies. I've built real projects with authentication, dashboards, and APIs.";
+  "Full-stack developer specializing in e-commerce platforms, SaaS MVPs, and business web apps. Built with Next.js, Node.js, TypeScript, PostgreSQL, and Docker. Available for freelance projects.";
 const NAME = "Md Shakerullah Sourov";
 
 export const metadata: Metadata = {
@@ -40,6 +40,21 @@ export const metadata: Metadata = {
     },
   },
 
+  keywords: [
+    "full-stack developer",
+    "Next.js developer",
+    "Node.js developer",
+    "TypeScript developer",
+    "PostgreSQL",
+    "freelance web developer",
+    "e-commerce developer",
+    "SaaS developer",
+    "web application developer",
+    "React developer",
+    "Docker",
+    "remote developer",
+  ],
+
   openGraph: {
     type: "website",
     url: BASE_URL,
@@ -51,13 +66,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Shakerullah Portfolio Preview",
+        alt: "Shakerullah — Full-Stack Developer Portfolio",
       },
       {
         url: "/og-image-small.png",
         width: 600,
         height: 315,
-        alt: "Shakerullah Portfolio Preview",
+        alt: "Shakerullah — Full-Stack Developer Portfolio",
       },
     ],
   },
@@ -67,8 +82,8 @@ export const metadata: Metadata = {
     creator: "@mdshakerullahS",
     site: "@mdshakerullahS",
     images: ["/og-image.png"],
-    description: DESCRIPTION,
     title: TITLE,
+    description: DESCRIPTION,
   },
 
   icons: {
@@ -77,12 +92,18 @@ export const metadata: Metadata = {
   },
 
   creator: NAME,
-
   publisher: NAME,
+
+  authors: [
+    {
+      name: NAME,
+      url: BASE_URL,
+    },
+  ],
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
@@ -93,7 +114,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${mono.variable} ${syne.variable} ${sans.variable} antialiased`}
       >
         {children}
       </body>

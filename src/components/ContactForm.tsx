@@ -1,13 +1,12 @@
 "use client";
 
-import { messageSchema } from "@/schemas/message.schema";
+import { messageSchema, PROJECT_TYPES } from "@/schemas/message.schema";
 import { APIError, APISuccess } from "@/types/api.types";
 import { MessageInput } from "@/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2, CheckCircle2, AlertCircle, Send } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Loader } from "lucide-react";
+import { ReactNode, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { motion, AnimatePresence } from "motion/react";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -51,122 +50,122 @@ export default function ContactForm() {
     }
   };
 
+  useEffect(() => {
+    if (status === "idle") return;
+    const timer = setTimeout(() => {
+      setStatus("idle");
+      setServerMsg(null);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, [status]);
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Input Group: Name */}
-      <div className="space-y-2">
-        <label
-          htmlFor="name"
-          className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1"
-        >
-          Full Name
-        </label>
-        <input
-          id="name"
-          type="text"
-          placeholder="e.g. Alex Rivera"
-          {...register("name")}
-          className={`w-full bg-white/3 border-b ${errors.name ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all placeholder:text-slate-400 text-white`}
-        />
-        {errors.name && (
-          <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-            <AlertCircle size={12} /> {errors.name.message}
-          </p>
-        )}
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="h-full flex flex-col justify-center gap-4"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <FormGroup label="Your Name">
+          <input
+            type="text"
+            {...register("name")}
+            className="bg-surface border border-border focus:border-accent shadow-[0_0_0_3px_rgba(232,255,71,0.06)] rounded-md py-3 px-4 font-body text-[0.9rem] text-text outline-none placeholder:text-text-dim w-full transition-[border-color,box-shadow] duration-200"
+            placeholder="Jane Smith"
+          />
+          {errors.name && (
+            <p className="text-red text-xs mt-1 flex items-center gap-1">
+              {errors.name.message}
+            </p>
+          )}
+        </FormGroup>
+        <FormGroup label="Email">
+          <input
+            type="email"
+            {...register("email")}
+            className="bg-surface border border-border focus:border-accent shadow-[0_0_0_3px_rgba(232,255,71,0.06)] rounded-md py-3 px-4 font-body text-[0.9rem] text-text outline-none placeholder:text-text-dim w-full transition-[border-color,box-shadow] duration-200"
+            placeholder="jane@startup.com"
+          />
+          {errors.email && (
+            <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+              {errors.email.message}
+            </p>
+          )}
+        </FormGroup>
       </div>
-
-      {/* Input Group: Email */}
-      <div className="space-y-2">
-        <label
-          htmlFor="email"
-          className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1"
+      <FormGroup label="Project Type (Optional)">
+        <select
+          {...register("projectType", {
+            setValueAs: (v) => (v === "" ? undefined : v),
+          })}
+          className="bg-surface border border-border focus:border-accent shadow-[0_0_0_3px_rgba(232,255,71,0.06)] rounded-md py-3 px-4 font-body text-[0.9rem] text-text outline-none placeholder:text-text-dim w-full transition-[border-color,box-shadow] duration-200 cursor-pointer"
         >
-          Email Address
-        </label>
-        <input
-          id="email"
-          type="email"
-          placeholder="name@company.com"
-          {...register("email")}
-          className={`w-full bg-white/3 border-b ${errors.email ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all placeholder:text-slate-400 text-white`}
-        />
-        {errors.email && (
-          <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-            <AlertCircle size={12} /> {errors.email.message}
-          </p>
-        )}
-      </div>
-
-      {/* Input Group: Message */}
-      <div className="space-y-2">
-        <label
-          htmlFor="message"
-          className="text-[11px] font-bold uppercase tracking-widest text-slate-400 ml-1"
-        >
-          Project Details
-        </label>
+          <option value="">What are you building?</option>
+          {PROJECT_TYPES.map((type) => (
+            <option key={type} value={type}>
+              {type}
+            </option>
+          ))}
+        </select>
+      </FormGroup>
+      <FormGroup label="Tell me about your project">
         <textarea
-          id="message"
-          placeholder="Briefly describe your goals, timeline, and tech stack..."
           {...register("message")}
-          className={`w-full bg-white/3 border-b ${errors.message ? "border-red-500" : "border-white/10"} p-4 rounded-t-xl outline-none focus:bg-white/6 focus:border-blue-500 transition-all h-32 resize-none placeholder:text-slate-400 text-white`}
+          className="bg-surface border border-border focus:border-accent shadow-[0_0_0_3px_rgba(232,255,71,0.06)] rounded-md py-3 px-4 font-body text-[0.9rem] text-text outline-none placeholder:text-text-dim w-full resize-y min-h-32.5 leading-[1.6] transition-[border-color,box-shadow] duration-200 cursor-pointer"
+          placeholder="Describe what you need — the problem you're solving, rough scope, timeline if you have one. The more context, the better my response."
         />
         {errors.message && (
           <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
-            <AlertCircle size={12} /> {errors.message.message}
+            {errors.message.message}
           </p>
         )}
-      </div>
+      </FormGroup>
 
-      {/* Submit Area */}
-      <div className="pt-4 space-y-4">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="group w-full flex items-center justify-center gap-3 py-4 bg-white hover:bg-blue-500 disabled:bg-slate-700 text-black hover:text-white font-bold rounded-xl transition-all duration-300 transform active:scale-[0.98]"
+      <p className="font-mono text-[0.72rem] mt-1.5 text-text-dim">
+        Typically reply within 24 hours with scope + timeline estimate. No spam,
+        ever.
+      </p>
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="bg-accent hover:bg-accent-hover text-black border-none py-3.5 px-7 rounded-md font-mono text-[0.85rem] font-medium cursor-pointer tracking-[0.02em] w-full hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(232,255,71,0.2)] transition-[background,transform,box-shadow] duration-200"
+      >
+        {isSubmitting ? (
+          <span>
+            <Loader size="12px" className="animate-spin inline mx-1" />
+            Loading...
+          </span>
+        ) : (
+          <span>
+            Send Message <ArrowRight size="12px" className="inline mx-1" />
+          </span>
+        )}
+      </button>
+
+      {status !== "idle" && (
+        <div
+          className={`p-4 rounded-xl border ${status === "success" ? "bg-emerald-500/20 border-emerald-500 text-emerald-400" : "bg-red/20 border-red text-red-400"} text-sm flex items-center gap-3`}
         >
-          {isSubmitting ? (
-            <Loader2 className="animate-spin" size={20} />
-          ) : (
-            <>
-              <span>SEND MESSAGE</span>
-              <Send
-                size={16}
-                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
-              />
-            </>
-          )}
-        </button>
-
-        {/* Trust Microcopy */}
-        <p className="text-center text-[10px] text-gray-400 font-medium tracking-wide">
-          NO SPAM. JUST A DIRECT LINE TO MY INBOX.
-        </p>
-
-        {/* Feedback Messages */}
-        <AnimatePresence mode="wait">
-          {status === "success" && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm flex items-center gap-3"
-            >
-              <CheckCircle2 size={18} />
-              {serverMsg}
-            </motion.div>
-          )}
-          {status === "error" && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm flex items-center gap-3"
-            >
-              <AlertCircle size={18} />
-              {serverMsg}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          {serverMsg}
+        </div>
+      )}
     </form>
+  );
+}
+
+function FormGroup({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label className="font-mono text-[0.7rem] uppercase tracking-[0.08em] text-text-dim">
+        {label}
+      </label>
+      {children}
+    </div>
   );
 }

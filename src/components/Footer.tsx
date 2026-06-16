@@ -1,67 +1,53 @@
 "use client";
 
-import { SOCIAL_LINKS } from "@/constants";
-import { motion } from "motion/react";
 import Link from "next/link";
+import { motion } from "motion/react";
+import { Reveal } from "./AnimationUtils";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/5 bg-black pb-12 px-6">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.5, ease: "easeOut" },
-        }}
-        viewport={{ once: true }}
-        className="max-w-7xl mx-auto pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8"
-      >
-        {/* Identity & Mission */}
-        <div className="flex flex-col items-center md:items-start gap-2">
-          <p className="text-white font-bold text-lg tracking-tight">
-            Md Shakerullah Sourov
-          </p>
-          <p className="text-blue-400 text-sm font-medium">
-            Full-Stack Web Developer
-          </p>
-        </div>
-
-        {/* Availability & Socials */}
-        <div className="flex flex-col items-center md:items-end gap-4">
-          {/* Status CTA */}
-          <div className="flex items-center gap-2 px-3 py-1 bg-blue-400/10 border border-emerald-500/20 rounded-full">
-            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-            <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">
-              Available for new opportunities
-            </span>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-6">
-            {SOCIAL_LINKS.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                aria-label={`${link.label} profile`}
-                target="_blank"
-                className="text-slate-400 hover:text-white text-sm font-mono transition-colors"
+    <Reveal>
+      <footer className="bg-surface border-t border-border pt-12 pb-9">
+        <div className="wrapper">
+          <div className="flex items-center justify-between flex-wrap gap-5">
+            <div>
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 400, damping: 22 }}
               >
-                {link.label}
+                <Link href="/">
+                  <div className="font-display font-extrabold text-[1rem]">
+                    shakerullah<span className="text-accent">.</span>
+                  </div>
+                </Link>
+              </motion.div>
+              <div className="text-[0.82rem] mt-1 font-mono text-text-dim">
+                Full-Stack Developer · Available for Freelance
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-6 [&>a]:font-mono [&>a]:text-[0.78rem] [&>a]:text-text-dim [&>a]:hover:text-accent [&>a]:transition-colors [&>a]:duration-200">
+              <Link href="#projects">Projects</Link>
+              <Link href="#services">Services</Link>
+              <Link href="#process">Process</Link>
+              <Link href="#about">About</Link>
+              <Link href="https://github.com/mdshakerullahS" target="_blank">
+                GitHub
               </Link>
-            ))}
+              <Link
+                href="https://linkedin.com/in/mdshakerullah"
+                target="_blank"
+              >
+                LinkedIn
+              </Link>
+            </div>
+            <div className="font-mono text-[0.72rem] text-text-dim">
+              © {currentYear} Shakerullah — Built with Next.js & TypeScript
+            </div>
           </div>
         </div>
-      </motion.div>
-
-      {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto mt-12 flex justify-center">
-        <p className="text-slate-400 text-[11px] font-mono tracking-wider">
-          &copy; {currentYear} — BUILT WITH NEXT.JS & TYPESCRIPT
-        </p>
-      </div>
-    </footer>
+      </footer>
+    </Reveal>
   );
 }

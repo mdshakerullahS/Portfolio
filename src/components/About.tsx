@@ -1,129 +1,124 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import CodeSnippet from "./CodeSnippet";
+import { STATS } from "@/constants";
+import { motion } from "motion/react";
+import {
+  Reveal,
+  StaggerReveal,
+  fadeLeft,
+  fadeRight,
+  scaleIn,
+} from "./AnimationUtils";
 
 export default function About() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
   return (
-    <section
-      ref={containerRef}
-      id="about"
-      className="py-16 bg-black relative overflow-hidden"
-    >
-      {/* Background Subtle Typography */}
-      <div className="absolute top-10 left-10 opacity-[0.02] select-none pointer-events-none">
-        <span className="text-[20vw] font-black leading-none">ABOUT</span>
-      </div>
+    <section id="about" className="bg-surface">
+      <div className="wrapper">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 items-center">
+          {/* Left – image + code snippet */}
+          <Reveal variants={fadeLeft} className="relative flex flex-col gap-6">
+            <div className="relative rounded-2xl overflow-hidden max-w-full lg:max-w-85 border border-border-light aspect-4/5 bg-surface2">
+              <motion.div
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="w-full h-full"
+              >
+                <Image
+                  src="/portrait.jpg"
+                  alt="Shakerullah — Full-Stack Developer"
+                  width={512}
+                  height={1024}
+                  className="w-full h-full object-cover block filter grayscale-20 hover:grayscale-0 transition-[filter] duration-400"
+                />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 12, y: 12 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="absolute -bottom-3 -right-3 bg-accent rounded-lg py-2.5 px-4 font-mono text-[0.72rem] font-medium tracking-[0.04em] text-black shadow-[0_8px_24px_rgba(232,255,71,0.25)]"
+              >
+                Available for freelance
+              </motion.div>
+            </div>
 
-      <motion.div
-        style={{ opacity, y }}
-        className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 items-start"
-      >
-        {/* Left: Narrative */}
-        <div className="lg:col-span-7 space-y-10">
-          <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase">
-              Building <span className="text-blue-500 italic">real-world</span>{" "}
-              apps, not just{" "}
-              <span className="text-slate-400 italic">interfaces.</span>
+            <CodeSnippet />
+          </Reveal>
+
+          {/* Right – text + stats */}
+          <Reveal
+            variants={fadeRight}
+            className="[&>p]:text-[0.95rem] [&>p]:leading-[1.8] [&>p]:mb-4.5 [&>p]:font-light [&>p]:text-text-muted [&>p>strong]:text-text [&>p>strong]:font-medium"
+          >
+            <div className="section-label">About</div>
+            <h2 className="section-title mb-6">
+              Built for production, not just demos.
             </h2>
-          </div>
-
-          <div className="prose prose-invert prose-lg max-w-none text-slate-400 leading-relaxed space-y-6">
             <p>
-              I build full-stack web applications with a focus on{" "}
-              <span className="text-white font-medium">
-                performance, scalability, and real-world usability
-              </span>
-              . My goal is to create products that not only look good, but work
-              reliably in production.
+              I&apos;m a self-taught full-stack developer who builds{" "}
+              <strong>complete web applications</strong> — from database schema
+              to deployed product. I started with frontend and pushed myself
+              deeper into backend to understand how real systems are architected
+              and maintained.
             </p>
-
             <p>
-              I started with frontend development and gradually moved into
-              backend to understand how complete systems are built. This allows
-              me to design applications where the UI, business logic, and data
-              flow work seamlessly together.
-            </p>
-
-            <p>
-              I&apos;ve built projects featuring authentication systems,
-              dashboards, and API-driven architectures — focusing on solving
-              practical problems instead of just building demos. I prioritize
-              clean, maintainable code and systems that can scale over time.
-            </p>
-
-            <p>
-              I&apos;m continuously improving by building real-world projects,
-              learning better system design, and refining how I develop and
-              deploy production-ready applications.
-            </p>
-          </div>
-        </div>
-
-        {/* Right: Proof & Capabilities */}
-        <div className="lg:col-span-5 lg:sticky lg:top-32 space-y-12">
-          {/* Engineering Identity */}
-          <div className="p-10 bg-white/3 border border-white/10 rounded-3xl backdrop-blur-sm relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-3xl rounded-full" />
-
-            <div className="flex flex-col items-center text-center">
-              <p className="text-3xl font-black text-white">
-                Full-Stack Developer
-              </p>
-              <p className="text-[10px] font-bold text-blue-500 uppercase tracking-widest mt-2">
-                Build → Test → Deploy
-              </p>
-            </div>
-          </div>
-
-          {/* What I Actually Do */}
-          <div className="space-y-6">
-            <h3 className="text-white font-bold text-sm tracking-widest uppercase flex items-center gap-2">
-              <span className="w-1 h-3 bg-blue-500" /> What I Actually Do
-            </h3>
-
-            <div className="grid sm:grid-cols-2 gap-4 pt-2">
-              {[
-                "Build full-stack web applications",
-                "Implement secure authentication systems",
-                "Design and develop REST APIs",
-                "Create responsive dashboards and UI",
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-3 text-slate-300 font-medium"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-blue-500" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Deployment / Real-world Proof */}
-          <div className="p-6 rounded-2xl bg-blue-500/5 border border-blue-500/10">
-            <p className="text-xs leading-relaxed text-slate-400">
-              <strong className="text-white block mb-1">
-                Production-Ready Deployment
+              I specialize in{" "}
+              <strong>
+                SaaS apps, e-commerce platforms, and service business tools
               </strong>
-              I deploy and manage applications in real environments, ensuring
-              they are stable, performant, and ready for real users — not just
-              local demos.
+              . Not because that&apos;s a marketing decision, but because those
+              are the problems I&apos;ve spent the most time solving — which
+              means I bring patterns that actually work, not just code that
+              compiles.
             </p>
-          </div>
+            <p>
+              My work is production-ready by default:{" "}
+              <strong>Dockerized, CI/CD wired, and tested </strong>before I
+              consider it done. I don&apos;t hand you a Vercel link with
+              hardcoded secrets and hope for the best.
+            </p>
+            <p className="mb-0">
+              Currently taking on <strong>freelance projects</strong>. If you
+              have a product idea or need a developer who can own the full
+              stack, let&apos;s talk.
+            </p>
+
+            {/* Stats */}
+            <StaggerReveal
+              className="grid grid-cols-3 gap-4 mt-8"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+                },
+              }}
+            >
+              {STATS.map((stat) => (
+                <motion.div
+                  key={stat.id}
+                  variants={scaleIn}
+                  whileHover={{
+                    y: -4,
+                    borderColor: "rgba(232,255,71,0.3)",
+                    transition: { duration: 0.2 },
+                  }}
+                  className="text-center bg-bg border border-border rounded-lg py-5 px-3 cursor-default"
+                >
+                  <span className="font-display [@media(width<=400px)]:text-2xl text-[2rem] font-extrabold block text-accent">
+                    {stat.number}
+                  </span>
+                  <span className="font-mono text-[0.7rem] block mt-1 tracking-[0.05em] text-text-dim">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
+            </StaggerReveal>
+          </Reveal>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

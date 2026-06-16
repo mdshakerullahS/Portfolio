@@ -1,105 +1,114 @@
 "use client";
 
-import { SOCIAL_LINKS } from "@/constants";
-import { ArrowUpRight, Clock } from "lucide-react";
 import Link from "next/link";
 import ContactForm from "./ContactForm";
-import { useRef } from "react";
+import { CONTACT_ITEMS } from "@/constants";
 import { motion } from "motion/react";
+import {
+  Reveal,
+  StaggerReveal,
+  fadeUp,
+  fadeLeft,
+  fadeRight,
+} from "./AnimationUtils";
+import { Calendar } from "lucide-react";
+
+const MotionLink = motion.create(Link);
 
 export default function Contact() {
-  const sectionRef = useRef<HTMLElement>(null);
-
   return (
-    <section
-      id="contact"
-      ref={sectionRef}
-      className="py-16 border-t border-white/5 bg-black relative overflow-hidden"
-    >
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center lg:items-start justify-between">
-          {/* Left Side: Positioning & Info */}
-          <div className="max-w-xl">
+    <section id="contact">
+      <div className="wrapper">
+        <Reveal>
+          <div className="section-label">Contact</div>
+        </Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-15 items-start">
+          {/* Left col */}
+          <Reveal variants={fadeLeft}>
+            <h2 className="font-display text-[2.2rem] font-bold tracking-[-0.03em] mb-4 leading-[1.15]">
+              Let&apos;s build
+              <br />
+              something <span className="text-accent">real.</span>
+            </h2>
+            <p className="text-[0.95rem] leading-[1.7] mb-9 font-light text-text-muted">
+              Tell me what you&apos;re building — I&apos;ll reply within 24
+              hours with a rough scope and honest timeline. No sales pitch, just
+              a direct conversation.
+            </p>
+
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 380, damping: 22 }}
             >
-              <div className="mb-12 flex flex-col gap-4">
-                <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
-                  Have an idea? Let&apos;s build something{" "}
-                  <span className="text-blue-500 italic">real.</span>
-                </h2>
-
-                {/* Positioning Line */}
-                <p className="text-gray-400 text-lg max-w-80 md:max-w-xl font-medium">
-                  Available for freelance projects and full-stack roles.
-                </p>
-
-                {/* Reply Expectation */}
-                <div className="flex items-center gap-2 text-white max-w-xl font-medium">
-                  <Clock className="w-4 h-4 text-blue-500/50" />
-                  <span>Typically respond within 24 hours</span>
-                </div>
-              </div>
+              <Link
+                href="https://cal.com/mdshakerullah/discovery"
+                target="_blank"
+                className="flex items-center justify-center gap-2.5 py-3.5 px-6 border border-accent rounded-lg bg-accent-dim hover:bg-accent text-accent hover:text-black font-mono text-[0.85rem] font-medium tracking-[0.02em] mb-2 transition-[background,color] duration-200"
+              >
+                <Calendar size="13.6px" />
+                Book a free 15-min call
+              </Link>
             </motion.div>
 
-            {/* Contact Methods */}
-            <div className="space-y-4">
-              {SOCIAL_LINKS.map((link, i) => {
-                return (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
+            <div className="w-full flex items-center justify-center gap-3 mb-2">
+              <span className="flex-1 h-0.5 bg-accent-dim" />
+              <span className="font-mono text-[0.72rem] tracking-[0.06em] white-space-nowrap text-text-dim">
+                or send a message
+              </span>
+              <span className="flex-1 h-0.5 bg-accent-dim" />
+            </div>
+
+            <StaggerReveal
+              className="flex flex-col gap-3.5"
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.08 } },
+              }}
+            >
+              {CONTACT_ITEMS.map((item) => (
+                <motion.div key={item.label} variants={fadeUp}>
+                  <MotionLink
+                    href={item.link}
+                    target="_blank"
+                    className="flex items-center gap-3.5 py-3.5 px-4.5 border border-border rounded-lg bg-surface transition-[border-color] duration-200 hover:border-text-dim"
+                    whileHover={{
+                      y: -6,
+                      borderColor: "rgba(232,255,71,0.2)",
+                      boxShadow:
+                        "0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(232,255,71,0.07)",
+                      transition: { duration: 0.25, ease: "easeOut" },
+                    }}
                   >
-                    <Link
-                      href={link.href}
-                      aria-label={`${link.label} profile`}
-                      target="_blank"
-                      className="group flex items-center justify-between p-5 rounded-2xl transition-all duration-300 hover:bg-blue-500/10 hover:border-blue-500/50 bg-white/2 border border-white/5"
+                    <motion.div
+                      className="w-9 h-9 bg-accent-dim rounded-md flex items-center justify-center text-[1rem] shrink-0"
+                      whileHover={{ scale: 1.15, rotate: -6 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 350,
+                        damping: 15,
+                      }}
                     >
-                      <div className="flex items-center gap-4">
-                        <div className="p-2 rounded-lg text-gray-400 group-hover:text-blue-400 transition-all duration-300">
-                          <link.icon />
-                        </div>
-                        <div className="flex flex-col">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
-                            {link.label}
-                          </span>
-                          <span className="text-sm md:text-lg font-medium text-slate-300 group-hover:text-white transition-all duration-300">
-                            {link.value}
-                          </span>
-                        </div>
+                      {item.icon}
+                    </motion.div>
+                    <div>
+                      <div className="font-mono text-[0.7rem] uppercase tracking-[0.06em] text-text-dim">
+                        {item.label}
                       </div>
+                      <div className="text-[0.9rem] mt-0.5 text-text-muted">
+                        {item.value}
+                      </div>
+                    </div>
+                  </MotionLink>
+                </motion.div>
+              ))}
+            </StaggerReveal>
+          </Reveal>
 
-                      <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-blue-400 transition-all duration-300 -translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0" />
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Right Side: Form */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="w-full lg:max-w-125 relative"
-          >
-            {/* Subtle glow behind form */}
-            <div className="absolute -inset-4 bg-blue-500/5 blur-3xl rounded-full pointer-events-none" />
-
-            <div className="glass p-8 md:p-10 rounded-[2.5rem] border border-white/5 relative z-10">
-              <h3 className="text-xl font-bold text-white mb-8">
-                Send a Brief
-              </h3>
-              <ContactForm />
-            </div>
-          </motion.div>
+          {/* Right col – form */}
+          <Reveal variants={fadeRight} className="h-full">
+            <ContactForm />
+          </Reveal>
         </div>
       </div>
     </section>
